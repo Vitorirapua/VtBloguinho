@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page_title }}</title>
+    <link rel="stylesheet" href="/static/bloguinho/css/_base.css">
+</head>
+<body>
+    <header>
+        <h1>VtBloguinho</h1>
+    </header>
+    <nav>
+        <a href="{% url 'index' %}"><span>Inicio</span></a>
+        <a href="{% url 'new' %}"><span>Nova postagem</span></a>
+        <a href="{% url 'about' %}"><span>Sobre</span></a>
+        
+    </nav>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+    <footer>
+        <p>&copy; 2024 Vitor Irapuã.</p>
+    </footer>
+</body>
+</html>
