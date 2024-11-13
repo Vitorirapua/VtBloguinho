@@ -1,10 +1,27 @@
+from django.utils import timezone
 from django.shortcuts import render
+from .models import NewPost
+from .forms import NewForm
 
 def index(request):
-    return render(request, 'bloguinho/index.html')
+    now = timezone.now()
+    posts = NewPost.objects.filter(expires__gte=now).order_by('-date')
+    return render(request, 'bloguinho/index.html', {'posts': posts})
 
-def new(request):
-    return render(request, 'bloguinho/new.html')
 
 def about(request):
     return render(request, 'bloguinho/about.html')
+
+
+def new(request):
+
+    success = False
+
+    if request.method == 'POST':
+        form = NewForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            success = True
+    else:
+        form = NewForm()
+    return render(request, 'bloguinho/new.html', {'form': form, 'success': success})

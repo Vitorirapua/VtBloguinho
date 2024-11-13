@@ -1,5 +1,17 @@
 {% extends 'bloguinho/_base.html' %}
+
 {% block content %}
-    <h2>Nova postagem</h2>
-    <p>Bem-vindo.</p>
+
+<h2>Nova postagem</h2>
+
+{% if success %}
+<p>Oba! Sua postagem foi enviada...</p>
+{% endif %}
+
+<form method="post" enctype="multipart/form-data" id="formNew">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Salvar</button>
+</form>
+
 {% endblock %}

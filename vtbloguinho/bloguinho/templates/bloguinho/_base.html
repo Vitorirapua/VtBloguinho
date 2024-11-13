@@ -1,11 +1,15 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'bloguinho/css/_base.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <title>{{ page_title }}</title>
-    <link rel="stylesheet" href="/static/bloguinho/css/_base.css">
 </head>
+
 <body>
     <header>
         <h1>VtBloguinho</h1>
@@ -14,13 +18,28 @@
         <a href="{% url 'index' %}"><span>Inicio</span></a>
         <a href="{% url 'new' %}"><span>Nova postagem</span></a>
         <a href="{% url 'about' %}"><span>Sobre</span></a>
-        
     </nav>
     <main>
         {% block content %}{% endblock %}
     </main>
     <footer>
-        <p>&copy; 2024 Vitor Irapuã.</p>
+        <div class="footer-content">
+            <p>&copy; 2024 Vitor Irapuã.</p>
+            <div class="social-icons">
+                <a href="https://www.facebook.com/seuPerfil" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.tiktok.com/@meno.vt__" target="_blank"><i class="fab fa-tiktok"></i></a>
+                <a href="https://www.instagram.com/seuPerfil" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://wa.me/21968677883" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            </div>
+        </div>
     </footer>
+
+    <script>
+        window.addEventListener('load', function () {
+            if (window.history.replaceState) {
+                window.history.replaceState(null, null, window.location.href);
+            }
+        });
+    </script>
 </body>
 </html>

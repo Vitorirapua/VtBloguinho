@@ -1,5 +1,25 @@
 {% extends 'bloguinho/_base.html' %}
+
 {% block content %}
-    <h2>Bloguinho</h2>
-    <p>Bem-vindo.</p>
+
+<h2>Postagens Recentes</h2>
+
+<div class="list">
+
+    {% for post in posts %}
+
+    <div class="item">
+        <a href="{{ post.image }}" target="_blank">
+            <img src="{{ post.image }}" alt="{{ post.title }}">
+        </a>
+        <div>
+            <h4>{{ post.title }}</h4>
+            <div>{{ post.content }}</div>
+        </div>
+    </div>
+
+    {% endfor %}
+
+</div>
+
 {% endblock %}
