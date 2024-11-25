@@ -6,6 +6,7 @@ from .forms import NewForm
 def index(request):
     now = timezone.now()
     posts = NewPost.objects.filter(expires__gte=now).order_by('-date')
+    print('/n/n/n', posts, '/n/n/n')
     return render(request, 'bloguinho/index.html', {'posts': posts})
 
 
